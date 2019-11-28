@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mark.springboot.dao.QueryMapper">
+
+    <select id="getAllTables" resultType="Tables">
+        select
+            table_name name,
+            table_comment comment
+        from information_schema.tables
+        where table_schema=#{dataName}
+        order by table_name
+    </select>
+
+    <select id="getTable" resultType="TableFields">
+        select
+            COLUMN_NAME field,
+            column_type type,
+            IS_NULLABLE isNull,
+            column_key key
+            column_comment comment,
+        from information_schema.columns
+        where table_schema = #{dataName}
+        and table_name = #{tableName}
+    </select>
+
+</mapper>
