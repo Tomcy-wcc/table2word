@@ -19,9 +19,20 @@ public class create {
      * 获取库下面所有表的表名和表的注释
      * @return
      */
-    @RequestMapping("/demo")
-    public R generate(String dataName) {
+    @RequestMapping("/tablesToWord")
+    public R tablesToWord(String dataName) {
         createService.getTableInfo(dataName);
+        return R.ok();
+    }
+
+    /**
+     * 获取某张表下面的字段名，字段类型，是否为null, 约束, 字段说明，
+     * @param dataName
+     * @return
+     */
+    @RequestMapping("/tableFieldsToWord")
+    public R tableFieldsToWord(String dataName) {
+        createService.getTableFields(dataName);
         return R.ok();
     }
 }

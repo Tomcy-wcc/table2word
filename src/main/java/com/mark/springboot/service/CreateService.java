@@ -32,11 +32,10 @@ public class CreateService {
     /**
      * 将某库下的所有的表属性转成word
      * @param dataName
-     * @param tableName
      */
-    public void getTableFields(String dataName, String tableName){
+    public void getTableFields(String dataName){
         List<Tables> tables = queryMapper.getAllTables(dataName);
-        dateToWordUtil.tableFieldsToWord(dataName, tableName, filePath);
+        dateToWordUtil.tableFieldsToWord(dataName, tables, filePath);
     }
 
 
