@@ -36,41 +36,28 @@ public class DateToWordUtil {
             document.open();
 
             String pheae = "dataName:" + dataName;
-
-            Paragraph p = new Paragraph(pheae, new Font(Font.NORMAL, 24, Font.BOLDITALIC, new Color(0, 0, 0)));
-
+            Paragraph p = new Paragraph(pheae, new Font(Font.NORMAL, 24, Font.BOLD, new Color(0, 0, 0)));
             p.setAlignment(1);
-
             document.add(p);
 
             Table table = new Table(2);//6列
-
             table.setBorderWidth(1);
-
-// table.setBorderColor(Color.BLACK);
-
-            table.setPadding(0);
-
+            table.setPadding(10);
             table.setSpacing(0);
 
             /*
              * 添加表头的元素，并设置表头背景的颜色
              */
             Color chade = new Color(176, 196, 222);
-
             Cell cell = new Cell("表名称");// 单元格
-
             cell.setBackgroundColor(chade);
-
             table.addCell(cell);
 
             cell = new Cell("说明");// 单元格
-
             cell.setBackgroundColor(chade);
-
             table.addCell(cell);
-
             table.endHeaders();// 表头结束
+
             // 表格的主体
             for (int k = 0; k < tables.size(); k++) {
                 String table_name = tables.get(k).getName();
@@ -83,7 +70,6 @@ public class DateToWordUtil {
 
             //生成表格
             document.add(table);
-
             document.close();
         } catch (Exception e) {
             e.printStackTrace();
